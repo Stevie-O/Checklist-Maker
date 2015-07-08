@@ -30,9 +30,11 @@ string clist::get_name(){
 }
 
 void clist::print_list(){
+	cout << name << endl;
 	for (auto index : items){
 		cout << index << endl;
 	}
+	cout << "End of " << name << " checklist\n\n";
 }
 
 const bool clist::get_state(){
