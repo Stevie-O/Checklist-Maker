@@ -7,7 +7,7 @@ class Clm {
 		
 		list_of_checks.add_checklist();
 		list_of_checks.add_checklist();
-		list_of_checks.print_lists();
+		list_of_checks.print_lists(Console.Out);
 	
 		Console.ReadLine();
 		return 0;

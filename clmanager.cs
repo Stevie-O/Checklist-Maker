@@ -42,11 +42,11 @@ class checklist
 		return clists.ContainsKey(search_key);
 	}
 
-	public void print_lists()
+	public void print_lists(TextWriter w)
 	{
 		foreach (var list in clists.Values)
 		{
-			list.print_list();
+			list.print_list(w);
 		}
 	}
 

@@ -29,11 +29,11 @@ class clist
 		return this.name;
 	}
 
-	public void print_list()
+	public void print_list(TextWriter w)
 	{
 		foreach (var item in items)
 		{
-			Console.WriteLine(item);
+			w.WriteLine(item);
 		}
 	}
 
