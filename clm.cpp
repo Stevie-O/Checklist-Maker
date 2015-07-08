@@ -39,9 +39,13 @@ public:
 		clists.push_back(new clist(name, file_name));
 	}
 
+	void print_lists(){
+		for (auto index : clists){
+			index->print_list();
+		}
+	}
 
 private:
-
 	// Checks for any duplicates in the list.
 	bool check_duplicate(string search_key){
 		for (auto i : clists){
@@ -55,12 +59,19 @@ private:
 	vector<clist*>	clists;
 };
 
-
+void display_menu();
+char get_char();
 
 int main(void){
 	checklist*	list_of_checks = new checklist();
 
+	list_of_checks->add_checklist();
+	list_of_checks->add_checklist();
+	list_of_checks->add_checklist();
+
+	list_of_checks->print_lists();
 
 	cout << "Hello world!" << endl;
+	cin.get();
 	return 0;
 }
