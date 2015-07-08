@@ -7,21 +7,21 @@ class clist
 	private string name;
 	private string associated_file;
 	private List<string> items;
-	private bool state;
+	private bool dirty;
 
 	public clist(string list_name, string file_name)
 	{
 		name = list_name;
 		associated_file = file_name;
-		state = false;
 		items = new List<string>();
+		set_dirty(true);
 	}
 
 	public void add_item(string new_item)
 	{
 		string item_data = "[ ] - " + new_item;
 		items.Add(item_data);
-		change_state(false);
+		set_dirty(true);
 	}
 
 	public string get_name()
@@ -37,14 +37,14 @@ class clist
 		}
 	}
 
-	public bool get_state() { return this.state; }
+	public bool get_state() { return this.dirty; }
 
 
 	public void save()
 	{
-		if (state) // if the state of the object is clean
+		if (dirty) // if the state of the object is clean
 			return;
-		else if (!state) // if the state of the object is dirty
+		else if (!dirty) // if the state of the object is dirty
 			write_file();
 	}
 	
@@ -60,7 +60,7 @@ class clist
 			}
 		}
 
-		change_state(false);
+		set_dirty(false);
 	}
 
 	private void write_file()
@@ -72,11 +72,11 @@ class clist
 				sw.WriteLine(item);		
 		}
 
-		change_state(true);
+		set_dirty(false);
 	}
 
-	private void change_state(bool new_state)
+	private void set_dirty(bool is_dirty)
 	{
-		state = new_state;
+		dirty = is_dirty;
 	}
 }
